@@ -1,16 +1,15 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final pocketBaseProvider =
-    StateNotifierProvider<PocketBaseNotifier, PocketBaseState>(
-  (ref) => PocketBaseNotifier(),
-);
+part 'pocketbase.g.dart';
 
 @immutable
-class PocketBaseState {
-  const PocketBaseState();
+class DatabaseState {
+  const DatabaseState();
 }
 
-class PocketBaseNotifier extends StateNotifier<PocketBaseState> {
-  PocketBaseNotifier() : super(const PocketBaseState());
+@riverpod
+class Database extends _$Database {
+  @override
+  DatabaseState build() => const DatabaseState();
 }
