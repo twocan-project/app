@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import './providers/pocketbase.dart';
 
 void main() {
@@ -9,7 +10,6 @@ void main() {
 class Twocan extends StatelessWidget {
   const Twocan({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -19,14 +19,14 @@ class Twocan extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -37,9 +37,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final db = ref.watch(databaseProvider);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Twocan'),
+        title: Text(db.valueOrNull?.user?.name ?? 'Twocan'),
       ),
       body: Center(
         child: Column(
