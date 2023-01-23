@@ -29,19 +29,18 @@ class _SystemHash {
   }
 }
 
-String _$DatabaseHash() => r'd7806b28393c8d187a4cdfbbf9b1452744ad2bc0';
+String _$DatabaseHash() => r'0e027e8cd3ef30afc6cc3d7f9f5bba8afa921dfd';
 
 /// See also [Database].
-final databaseProvider =
-    AutoDisposeAsyncNotifierProvider<Database, DatabaseState>(
+final databaseProvider = AutoDisposeNotifierProvider<Database, DatabaseState>(
   Database.new,
   name: r'databaseProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$DatabaseHash,
 );
-typedef DatabaseRef = AutoDisposeAsyncNotifierProviderRef<DatabaseState>;
+typedef DatabaseRef = AutoDisposeNotifierProviderRef<DatabaseState>;
 
-abstract class _$Database extends AutoDisposeAsyncNotifier<DatabaseState> {
+abstract class _$Database extends AutoDisposeNotifier<DatabaseState> {
   @override
-  FutureOr<DatabaseState> build();
+  DatabaseState build();
 }

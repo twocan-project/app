@@ -21,9 +21,16 @@ class DatabaseState {
 
 @riverpod
 class Database extends _$Database {
+  late final PocketBase _pb;
+
   @override
-  Future<DatabaseState> build() async {
-    final pb = PocketBase('http://localhost:8090');
-    return DatabaseState._(pb);
+  DatabaseState build() {
+    _pb = PocketBase('http://localhost:8090');
+    return DatabaseState._(_pb);
+  }
+
+  Future<void> login({required username, required password}) async {
+    await _pb.collection('users').authWithPassword(username, password);
+    state = DatabaseState._(_pb);
   }
 }

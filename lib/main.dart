@@ -41,7 +41,7 @@ class _HomePageState extends ConsumerState<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(db.valueOrNull?.user?.name ?? 'Twocan'),
+        title: Text(db.user?.name ?? 'Twocan'),
       ),
       body: Center(
         child: Column(
