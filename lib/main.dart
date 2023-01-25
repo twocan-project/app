@@ -12,9 +12,12 @@ class Twocan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Twocan',
-      home: HomePage(),
+      theme: ThemeData.dark(
+        useMaterial3: true,
+      ),
+      home: const HomePage(),
     );
   }
 }
@@ -52,7 +55,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
